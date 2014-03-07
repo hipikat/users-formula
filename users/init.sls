@@ -132,7 +132,7 @@ ssh_auth_{{ name }}_{{ loop.index0 }}:
     - require:
       - user: {{ name }}_user
       {% for group in user.get('groups', []) %}
-      - group: {{ group }}_group
+      - group: {{ name }}_{{ group }}_group
       {% endfor %}
 
 {{ user['dotfiles']['git_url'] }}_{{ name }}:
