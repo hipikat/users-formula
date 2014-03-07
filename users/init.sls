@@ -135,9 +135,9 @@ ssh_auth_{{ name }}_{{ loop.index0 }}:
       - group: {{ group }}_group
       {% endfor %}
 
-{{ user['dotfiles']['repository'] }}_{{ name }}:
+{{ user['dotfiles']['git_url'] }}_{{ name }}:
   git.latest:
-    - name: {{ user['dotfiles']['repository'] }}
+    - name: {{ user['dotfiles']['git_url'] }}
     - target: {{ dotfiles_dir }}
     - user: {{ name }}
     - require:
@@ -149,7 +149,7 @@ ssh_auth_{{ name }}_{{ loop.index0 }}:
     - user: {{ name }}
     - cwd: {{ dotfiles_dir }}
     - watch:
-      - git: {{ user['dotfiles']['repository'] }}_{{ name }}
+      - git: {{ user['dotfiles']['git_url'] }}_{{ name }}
 
 {% endif %}
 
